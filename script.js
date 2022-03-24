@@ -10,7 +10,7 @@ let data = [
             },
             {
                 type: `after`,
-                url: `/library`,
+                url: `/feed/library`,
                 name: `Library`,
             },
             {
