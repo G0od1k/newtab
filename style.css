@@ -1,0 +1,210 @@
+:root {
+    --txtShad: 0px 0px 5px;
+    --font: monospace;
+}
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    transition: 0.4s;
+}
+::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+    transition: 0.4s;
+}
+::-webkit-scrollbar-thumb {
+    background: #0000;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #444444;
+}
+::-webkit-scrollbar-thumb:active {
+    background: #ffffff;
+}
+::-webkit-scrollbar-track {
+    background: #0000;
+}
+::-webkit-scrollbar-track:active {
+    background: #333333;
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+body {
+    background: #080808;
+
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+
+    transition: background-color 0.3s;
+}
+
+#href {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: stretch;
+
+    resize: both;
+    /* background-color: darkslategrey; */
+    overflow: hidden;
+}
+
+.sub {
+    counter-reset: a;
+    overflow-x: hidden;
+    overflow-y: overlay;
+
+    transition: max-height 0.3s ease-out;
+    max-height: 0px;
+    background-color: black;
+
+    position: absolute;
+    transform: translate(300px, -32px);
+
+    z-index: 2;
+}
+
+.a:hover > .sub,
+.sub:hover,
+a[h] > .sub {
+    transition: max-height 0.4s ease-in;
+    max-height: 500px;
+    background-color: black;
+    animation: 0.4s over 0s 1 forwards;
+}
+
+@keyframes over {
+    100% {
+        overflow: visible;
+    }
+}
+
+@counter-style circled-alpha {
+    system: fixed 10;
+    symbols: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z;
+    suffix: " ";
+}
+
+.a {
+    counter-increment: a;
+
+    color: white;
+    font-family: var(--font);
+    font-size: 24px;
+    line-height: 32px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    /* transition: 0.4s; */
+
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 32px;
+}
+
+.a:hover,
+.a[h] {
+    background-color: black;
+    overflow: visible;
+}
+
+.a_name::before {
+    content: counters(a, ".", circled-alpha);
+    margin-right: 8px;
+}
+
+.c::after {
+    content: ">";
+    position: absolute;
+    right: 8px;
+    transition: 0.3s;
+    transform-origin: 50% 55% 0;
+    /* background-color: red; */
+}
+
+.c:hover::after,
+.c[h]::after {
+    transform: rotate(90deg);
+}
+
+.a > .a_icon {
+    display: none;
+    width: 28px;
+    height: 28px;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: left;
+}
+
+u {
+    animation: col 5s infinite;
+    /* text-decoration-color: white; */
+}
+
+@keyframes col {
+    0% {
+        text-shadow: var(--txtShad) hsl(0deg, 86%, 67%);
+        color: hsl(0deg, 86%, 67%);
+    }
+    10% {
+        text-shadow: var(--txtShad) hsl(36deg, 86%, 67%);
+        color: hsl(36deg, 86%, 67%);
+    }
+    20% {
+        text-shadow: var(--txtShad) hsl(72deg, 86%, 67%);
+        color: hsl(72deg, 86%, 67%);
+    }
+    30% {
+        text-shadow: var(--txtShad) hsl(108deg, 86%, 67%);
+        color: hsl(108deg, 86%, 67%);
+    }
+    40% {
+        text-shadow: var(--txtShad) hsl(144deg, 86%, 67%);
+        color: hsl(144deg, 86%, 67%);
+    }
+    50% {
+        text-shadow: var(--txtShad) hsl(180deg, 86%, 67%);
+        color: hsl(180deg, 86%, 67%);
+    }
+    60% {
+        text-shadow: var(--txtShad) hsl(216deg, 86%, 67%);
+        color: hsl(216deg, 86%, 67%);
+    }
+    70% {
+        text-shadow: var(--txtShad) hsl(252deg, 86%, 67%);
+        color: hsl(252deg, 86%, 67%);
+    }
+    80% {
+        text-shadow: var(--txtShad) hsl(288deg, 86%, 67%);
+        color: hsl(288deg, 86%, 67%);
+    }
+    90% {
+        text-shadow: var(--txtShad) hsl(324deg, 86%, 67%);
+        color: hsl(324deg, 86%, 67%);
+    }
+    100% {
+        text-shadow: var(--txtShad) hsl(360deg, 86%, 67%);
+        color: hsl(360deg, 86%, 67%);
+    }
+}
+
+#clock {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+
+    font-family: var(--font);
+    color: white;
+    font-size: 150px;
+}
+
+#clock > small {
+    font-size: 50px;
+}
