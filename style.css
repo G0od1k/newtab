@@ -2,6 +2,7 @@
     --txtShad: 0px 0px 5px;
     --font: monospace;
 }
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -34,21 +35,27 @@
 body {
     background: #080808;
 
-    width: calc(100% - 16px);
-    height: calc(100% - 16px);
+    width: 100vw;
+    height: 100vh;
 
     transition: background-color 0.3s;
+
+    overflow: hidden;
+    margin: 0;
 }
 
 #href {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    align-content: stretch;
+    align-content: flex-start;
 
-    resize: both;
-    /* background-color: darkslategrey; */
-    overflow: hidden;
+    /* background-color: #0006; */
+    border-radius: 1rem;
+
+    margin: 8px;
+    height: 60vh;
+    width: 70vw;
 }
 
 .sub {
@@ -82,8 +89,9 @@ a[h] > .sub {
 }
 
 @counter-style circled-alpha {
-    system: fixed 10;
-    symbols: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z;
+    system: numeric;
+    symbols: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" A B C D E F G H I J K L M N
+        O P Q R S T U V W X Y Z;
     suffix: " ";
 }
 
@@ -115,7 +123,7 @@ a[h] > .sub {
 
 .a_name::before {
     content: counters(a, ".", circled-alpha);
-    margin-right: 8px;
+    margin: 0px 8px;
 }
 
 .c::after {
@@ -133,7 +141,7 @@ a[h] > .sub {
 }
 
 .a > .a_icon {
-    display: none;
+    /* display: none; */
     width: 28px;
     height: 28px;
 
@@ -141,6 +149,7 @@ a[h] > .sub {
     top: 50%;
     transform: translateY(-50%);
     float: left;
+    margin-left: 2px;
 }
 
 u {
@@ -202,9 +211,204 @@ u {
 
     font-family: var(--font);
     color: white;
-    font-size: 150px;
+    font-size: 100px;
 }
 
-#clock > small {
+#clock > :nth-child(n + 4) {
     font-size: 50px;
+}
+
+aside {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 45vw;
+    transform: translateX(100%);
+    padding: 8px;
+    box-sizing: border-box;
+
+    transition: transform 0.4s;
+
+    background-color: #080808;
+
+    overflow: auto;
+
+    color: white;
+    font-family: monospace;
+
+    --inp: #aaa;
+    --inp-h: #ccc;
+    --inp-f: #ddd;
+    --inp-s: #fff;
+    --btn: #363636;
+    --btn-h: #545454;
+    --btn-a: #727272;
+}
+
+#settingsButtonOpen {
+    display: block;
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+
+    width: 24px;
+    height: 24px;
+
+    color: white;
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+
+#settingsCheck {
+    display: none;
+}
+
+#settingsCheck:checked + aside {
+    transform: unset;
+}
+
+#tabs {
+    height: 60%;
+    overflow: auto;
+    padding-left: 0.5rem;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+#settings {
+    height: calc(40% - 2rem);
+}
+
+.tab {
+    /* min-height: 4rem; */
+
+    padding: 0.25rem;
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    /* border: 1px solid white; */
+    border-radius: 0.25rem;
+    background-color: #121212;
+}
+
+.tab + .tab::before {
+    /* content: ""; */
+    background: white;
+    height: 0.0625rem;
+    width: 80%;
+    display: block;
+
+    margin-left: 10%;
+}
+
+.tab input {
+    background-color: #0000;
+    border: 0;
+    /* border-bottom: solid 0.0625rem white; */
+
+    color: var(--inp);
+}
+
+.tab input:focus {
+    color: var(--inp-f);
+}
+
+.tab input:hover {
+    color: var(--inp-h);
+}
+
+.tab_name {
+    font-size: 1rem;
+    display: block;
+}
+
+.tab_slice {
+    display: inline-flex;
+}
+
+.tab_sliceVal {
+    width: 2rem;
+    -moz-appearance: textfield;
+}
+
+.tab_sliceVal::-webkit-outer-spin-button,
+.tab_sliceVal::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.tab_sliceVal.tab_sliceStart {
+    text-align: right;
+}
+
+.tab_sub {
+    border-left: solid 0.125rem white;
+    margin-left: 0.25rem;
+}
+
+aside button {
+    background-color: var(--btn);
+    border: 0;
+    border-radius: 0.25rem;
+
+    width: 1.33em;
+    height: 1.33em;
+    aspect-ratio: 1/1;
+    box-sizing: content-box;
+    padding: 0;
+    display: inline-block;
+
+    color: var(--inp);
+    font-size: 1.5rem;
+    line-height: 1.33em;
+    text-align: center;
+    font-weight: bold;
+
+    align-self: flex-end;
+}
+
+aside button:hover:active {
+    background-color: var(--btn-a);
+}
+
+aside button:hover {
+    background-color: var(--btn-h);
+}
+
+.tab_sub:has(> .newTab:first-child) {
+    border: 0;
+    margin-left: 0;
+    display: inline-block;
+}
+
+.removeTab,
+.tab_sub > .newTab {
+    margin-left: 0.25em;
+
+    font-size: 1rem;
+}
+
+.removeTab:hover {
+    background-color: #d11a2a;
+}
+
+.removeTab {
+    float: right;
+}
+
+.tab_sub > .newTab:first-child {
+    margin-left: 0;
+}
+
+aside button > * {
+    display: block;
+    width: 100%;
 }

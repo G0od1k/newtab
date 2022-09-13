@@ -1,13 +1,50 @@
 <!DOCTYPE >
 <html>
     <head>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style.css" type="text/css" />
         <title>New Tab</title>
+        <script src="js/settings.js" defer></script>
+        <script src="script.js" defer></script>
+        <script src="js/loop.js" defer></script>
+        <script src="js/key.js" defer></script>
     </head>
     <body>
         <div id="href"></div>
         <span id="clock"></span>
-        <script src="script.js"></script>
-        <script src="clock.js"></script>
+        <label for="settingsCheck" id="settingsButtonOpen">⚙</label>
+        <input type="checkbox" id="settingsCheck" />
+        <aside>
+            <div class="settingsContainer" id="tabs"></div>
+            <div class="settingsContainer" id="settings">Soon</div>
+            <div class="settingsContainer" id="complete">
+                <button id="applySetting">
+                    <label for="settingsCheck">✓</label>
+                </button>
+                <button id="discardSetting">
+                    <label for="settingsCheck">✕</label>
+                </button>
+            </div>
+        </aside>
+        <template id="tab">
+            <div class="tab">
+                <input class="tab_name" placeholder="Name" />
+                <input class="tab_url" placeholder="Url" />
+                <input class="tab_before" placeholder="Before" />
+                <input class="tab_after" placeholder="After" />
+                <div class="tab_slice">
+                    <input
+                        class="tab_sliceVal tab_sliceStart"
+                        type="number"
+                        placeholder="--"
+                    /><span class="tab_sliceSep">:</span
+                    ><input
+                        class="tab_sliceVal tab_sliceEnd"
+                        type="number"
+                        placeholder="--"
+                    />
+                </div>
+                <div class="tab_sub"></div>
+            </div>
+        </template>
     </body>
 </html>
