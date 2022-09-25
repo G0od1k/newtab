@@ -262,11 +262,7 @@ aside {
     text-align: center;
 }
 
-#settingsCheck {
-    display: none;
-}
-
-#settingsCheck:checked + aside {
+#settingsCheck:checked ~ aside {
     transform: unset;
 }
 

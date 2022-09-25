@@ -7,16 +7,23 @@
         <script src="script.js" defer></script>
         <script src="js/loop.js" defer></script>
         <script src="js/key.js" defer></script>
+        <script src="js/import.js" defer></script>
+        <script src="js/export.js" defer></script>
     </head>
     <body>
         <div id="href"></div>
         <span id="clock"></span>
+
         <label for="settingsCheck" id="settingsButtonOpen">⚙</label>
-        <input type="checkbox" id="settingsCheck" />
+
+        <input type="checkbox" id="settingsCheck" hidden />
+        <input type="file" id="import" hidden />
         <aside>
             <div class="settingsContainer" id="tabs"></div>
             <div class="settingsContainer" id="settings">Soon</div>
             <div class="settingsContainer" id="complete">
+                <button ><label for="import">⤓</label></button>
+                <button id="export">↥</label></button>
                 <button id="applySetting">
                     <label for="settingsCheck">✓</label>
                 </button>
@@ -25,6 +32,7 @@
                 </button>
             </div>
         </aside>
+        <!-- Template for tab settings -->
         <template id="tab">
             <div class="tab">
                 <input class="tab_name" placeholder="Name" />

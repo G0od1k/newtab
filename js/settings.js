@@ -52,7 +52,10 @@ function loadTabs() {
                 target.value = tabData[x] ?? ``
 
                 target.oninput = () => {
-                    tabData[x] = target.value
+                    tabData[x] =
+                        target.type == `number`
+                            ? target.valueAsNumber
+                            : target.value
                     clearChildren(document.querySelector(`#href`))
                     drawDir(document.querySelector(`#href`), [])
                 }
