@@ -56,8 +56,7 @@ function loadTabs() {
                         target.type == `number`
                             ? target.valueAsNumber
                             : target.value
-                    clearChildren(document.querySelector(`#href`))
-                    drawDir(document.querySelector(`#href`), [])
+                    draw()
                 }
             }
         )
