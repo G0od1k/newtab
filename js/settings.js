@@ -60,9 +60,9 @@ function loadTabs() {
 
             target.oninput = () => {
                 tabData[x] =
-                    target.type == `number`
+                    (target.type == `number`
                         ? target.valueAsNumber
-                        : target.value
+                        : target.value) || undefined
                 draw()
             }
         })
