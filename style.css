@@ -326,6 +326,11 @@ aside {
     display: block;
 }
 
+.tab_key {
+    width: 2rem;
+    text-align: center;
+}
+
 .tab_slice {
     display: inline-flex;
 }

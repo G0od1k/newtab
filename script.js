@@ -68,6 +68,11 @@ function toSubPath(obj, path) {
 
 function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
     toSubPath(tabs, path).forEach((h, i) => {
+        if (h.key) {
+            toSubPath(keyMap, path)[i] = { sub: [], key: h.key }
+        }
+    })
+    toSubPath(tabs, path).forEach((h, i) => {
         let a = document.createElement(`a`),
             icon = document.createElement(`img`),
             name = document.createElement(`span`)
@@ -78,15 +83,17 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         name.className = `a_name`
         a.id = `I` + path.concat(i).join(`_`)
 
-        for (let j of h.name.toLowerCase().split(``)) {
-            if (
-                toSubPath(keyMap, path)
-                    .map((x) => x.key)
-                    .indexOf(j) == -1 &&
-                cfg.key.sym.includes(j)
-            ) {
-                toSubPath(keyMap, path)[i] = { sub: [], key: j }
-                break
+        if (!h.key) {
+            for (let j of h.name.toLowerCase().split(``)) {
+                if (
+                    toSubPath(keyMap, path)
+                        .map((x) => x.key)
+                        .indexOf(j) == -1 &&
+                    cfg.key.sym.includes(j)
+                ) {
+                    toSubPath(keyMap, path)[i] = { sub: [], key: j }
+                    break
+                }
             }
         }
 

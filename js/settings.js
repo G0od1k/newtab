@@ -46,20 +46,26 @@ function loadTabs() {
                 .content.firstElementChild.cloneNode(true),
             newTab = newTabButton(tabData, root)
 
-        ;["name", "url", "before", "after", "sliceStart", "sliceEnd"].forEach(
-            (x) => {
-                const target = tab.querySelector(`.tab_` + x)
-                target.value = tabData[x] ?? ``
+        ;[
+            "name",
+            "url",
+            "key",
+            "before",
+            "after",
+            "sliceStart",
+            "sliceEnd",
+        ].forEach((x) => {
+            const target = tab.querySelector(`.tab_` + x)
+            target.value = tabData[x] ?? ``
 
-                target.oninput = () => {
-                    tabData[x] =
-                        target.type == `number`
-                            ? target.valueAsNumber
-                            : target.value
-                    draw()
-                }
+            target.oninput = () => {
+                tabData[x] =
+                    target.type == `number`
+                        ? target.valueAsNumber
+                        : target.value
+                draw()
             }
-        )
+        })
 
         if (root) {
             tab.removeChild(tab.querySelector(`.tab_slice`))
