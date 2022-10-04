@@ -55,6 +55,7 @@ let cfg = {
         sym: "0123456789abcdefghijklmnopqrstuvwxyz",
     },
     icon: false,
+    tabsRenderDelay: 0,
 }
 let keyMap
 let path = []
@@ -118,7 +119,9 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             a.appendChild(icon)
         }
         a.appendChild(name)
-        dir.appendChild(a)
+        setTimeout(() => {
+            dir.appendChild(a)
+        }, cfg.tabsRenderDelay * i)
 
         if (h.sub) {
             let div = document.createElement(`div`)
