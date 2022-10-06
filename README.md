@@ -7,7 +7,6 @@ newtab is a simple start page for the browser.
 # What is special
 
 A hotkey is automatically set for **each** link
-You can disable hotkey for the link if you set `key` field `#`
 
 ✨ Added interface for tabs management
 
@@ -73,3 +72,5 @@ result:
 ```
 
 Or use ✨ new interface for tabs management
+
+You can disable hotkey for the link if you set `key` field `#`
