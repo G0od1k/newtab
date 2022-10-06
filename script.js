@@ -76,8 +76,8 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
     toSubPath(tabs, path).forEach((h, i) => {
         let a = document.createElement(`a`),
             icon = document.createElement(`img`),
-            name = document.createElement(`span`)
-        u = document.createElement(`u`)
+            name = document.createElement(`span`),
+            u = document.createElement(`u`)
 
         a.className = `a`
         icon.className = `a_icon`
@@ -110,8 +110,10 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             lp.slice(h.sliceStart, h.sliceEnd) +
             (h.after ?? "")
 
-        name.append(h.name.slice(0, hotLetterIndex))
-        name.appendChild(u)
+        if (hotLetterIndex != -1) {
+            name.append(h.name.slice(0, hotLetterIndex))
+            name.appendChild(u)
+        }
         name.append(h.name.slice(hotLetterIndex + 1))
 
         if (cfg.icon) {
