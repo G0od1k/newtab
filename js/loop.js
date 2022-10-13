@@ -1,7 +1,7 @@
 function drawClock() {
     document.body.style.backgroundColor = `hsl(${Math.random() * 360}, ${
-        cfg.bg.s
-    }%, ${cfg.bg.l}%)`
+        cfg.bgSaturate
+    }%, ${cfg.bgLight}%)`
 
     let d = new Date()
     document.querySelector(`#clock`).innerHTML = [

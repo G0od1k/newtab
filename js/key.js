@@ -1,5 +1,5 @@
 window.onkeydown = (e) => {
-    if (document.querySelector(`#settingsCheck`).checked || !cfg.key.hot)
+    if (document.querySelector(`#settingsCheck`).checked || !cfg.hotkeys)
         return 0
 
     let code = e.code.replace(/(Digit)|(Key)(\w)/, "$3").toLowerCase()

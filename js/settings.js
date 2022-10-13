@@ -4,7 +4,7 @@ function clearChildren(el) {
     })
 }
 
-function loadTabs() {
+function loadCfg() {
     const tabsListNode = document.querySelector(`#tabs`)
     clearChildren(tabsListNode)
 
@@ -18,7 +18,7 @@ function loadTabs() {
             path.sub.push({
                 name: "",
             })
-            loadTabs()
+            loadCfg()
             draw()
         }
 
@@ -33,7 +33,7 @@ function loadTabs() {
         button.onclick = function () {
             path.sub.splice(i, 1)
             if (!path.sub.length && !root) delete path.sub
-            loadTabs()
+            loadCfg()
             draw()
         }
 
@@ -89,10 +89,35 @@ function loadTabs() {
         tabsListNode.appendChild(rendTab(tab, true, tabs, i))
     })
     tabsListNode.appendChild(newTabButton(tabs))
+    ;[
+        "icon",
+        "hotkeys",
+        "keys",
+        "tabsRenderDelay",
+        "bgLight",
+        "bgSaturate",
+    ].forEach((x, i) => {
+        let input = document.querySelector((`#cfg.` + x).replaceAll(`.`, `-`))
+
+        input[typeof cfg[x] == `boolean` ? "checked" : "value"] = cfg[x]
+
+        input.oninput = () => {
+            cfg[x] =
+                input[
+                    {
+                        number: "valueAsNumber",
+                        boolean: "checked",
+                        string: "value",
+                    }[typeof cfg[x]]
+                ]
+
+            draw()
+        }
+    })
 }
 
 document.querySelector(`#settingsButtonOpen`).onclick = function () {
-    loadTabs()
+    loadCfg()
 }
 
 document.querySelector(`#discardSetting`).onclick = function () {

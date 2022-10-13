@@ -44,19 +44,19 @@ let tabs = JSON.parse(localStorage.tabs ?? `null`) ?? {
         },
     ],
 }
-let cfg = {
-    bg: {
-        type: "color",
-        s: 20,
-        l: 20,
-    },
-    key: {
-        hot: true,
-        sym: "0123456789abcdefghijklmnopqrstuvwxyz",
-    },
-    icon: false,
-    tabsRenderDelay: 0,
-}
+let cfg =
+    tabs.cfg ??
+    (tabs.cfg = {
+        bgType: "color",
+        bgSaturate: 20,
+        bgLight: 20,
+
+        hotkeys: true,
+        keys: "0123456789abcdefghijklmnopqrstuvwxyz",
+
+        icon: false,
+        tabsRenderDelay: 0,
+    })
 let keyMap
 let path = []
 
@@ -90,7 +90,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
                     toSubPath(keyMap, path)
                         .map((x) => x.key)
                         .indexOf(j) == -1 &&
-                    cfg.key.sym.includes(j)
+                    cfg.keys.includes(j)
                 ) {
                     toSubPath(keyMap, path)[i] = { sub: [], key: j }
                     break
@@ -157,3 +157,5 @@ function draw() {
 }
 
 draw()
+
+// document.querySelector(`#settingsButtonOpen`).click()

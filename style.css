@@ -92,7 +92,6 @@ a[h] > .sub {
     system: numeric;
     symbols: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" A B C D E F G H I J K L M N
         O P Q R S T U V W X Y Z;
-    suffix: " ";
 }
 
 .a {
@@ -237,6 +236,9 @@ aside {
     color: white;
     font-family: monospace;
 
+    display: flex;
+    flex-direction: column;
+
     --inp: #aaa;
     --inp-h: #ccc;
     --inp-f: #ddd;
@@ -244,6 +246,11 @@ aside {
     --btn: #363636;
     --btn-h: #545454;
     --btn-a: #727272;
+}
+
+aside > div {
+    margin: 0.5rem 0 0.5rem 0.5rem;
+    overflow-y: scroll;
 }
 
 #settingsButtonOpen {
@@ -267,9 +274,7 @@ aside {
 }
 
 #tabs {
-    height: 60%;
-    overflow: auto;
-    padding-left: 0.5rem;
+    height: calc(60% - 1rem);
 
     display: flex;
     flex-direction: row;
@@ -280,7 +285,27 @@ aside {
 }
 
 #settings {
-    height: calc(40% - 2rem);
+    height: calc(40% - 4rem);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 1rem;
+}
+
+#settings > div {
+    padding: 0.5rem;
+    background: #121212;
+    border-radius: 0.25rem;
+
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+#settings > div > h1 {
+    margin-top: 0;
 }
 
 .tab {
@@ -305,7 +330,7 @@ aside {
     margin-left: 10%;
 }
 
-.tab input {
+aside input {
     background-color: #0000;
     border: 0;
     /* border-bottom: solid 0.0625rem white; */
@@ -313,11 +338,11 @@ aside {
     color: var(--inp);
 }
 
-.tab input:focus {
+aside input:focus {
     color: var(--inp-f);
 }
 
-.tab input:hover {
+aside input:hover {
     color: var(--inp-h);
 }
 

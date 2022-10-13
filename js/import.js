@@ -4,7 +4,7 @@ document.querySelector(`#import`).onchange = function () {
     fr.onload = function () {
         const data = JSON.parse(fr.result)
         tabs = data
-        loadTabs()
+        loadCfg()
         draw()
     }
 

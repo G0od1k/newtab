@@ -20,7 +20,23 @@
         <input type="file" id="import" hidden />
         <aside>
             <div class="settingsContainer" id="tabs"></div>
-            <div class="settingsContainer" id="settings">Soon</div>
+            <div class="settingsContainer" id="settings">
+                <div>
+                    <h1>Keys</h1>
+                    <label>Keys:<input type="text" id="cfg-keys"></label>
+                    <label>Hot Keys:<input type="checkbox" id="cfg-hotkeys"></label>
+                </div>
+                <div>
+                    <h1>Background</h1>
+                    <label>Saturate:<input type="number" min="0" max="100" id="cfg-bgSaturate"></label>
+                    <label>Light:<input type="number" min="0" max="100" id="cfg-bgLight"></label>
+                </div>
+                <div>
+                    <h1>Tabs</h1>
+                    <label>Icon:<input type="checkbox" id="cfg-icon"></label>
+                    <label>Tabs Render Delay:<input type="number" min="0" max="1000" id="cfg-tabsRenderDelay"></label>
+                </div>
+            </div>
             <div class="settingsContainer" id="complete">
                 <button ><label for="import">⤓</label></button>
                 <button id="export">↥</label></button>
