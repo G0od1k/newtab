@@ -44,20 +44,7 @@ let tabs = JSON.parse(localStorage.tabs ?? `null`) ?? {
         },
     ],
 }
-let cfg =
-    tabs.cfg ??
-    (tabs.cfg = {
-        bgType: "color",
-        bgSaturate: 20,
-        bgLight: 20,
-
-        hotkeys: true,
-        keys: "0123456789abcdefghijklmnopqrstuvwxyz",
-
-        icon: false,
-        tabsRenderDelay: 0,
-    })
-let keyMap
+let cfg, keyMap
 let path = []
 
 function toSubPath(obj, path) {
@@ -152,6 +139,19 @@ Object.values(document.querySelectorAll(`#href>a`)).forEach((x, i) => {
 
 function draw() {
     keyMap = { sub: [] }
+    cfg =
+        tabs.cfg ??
+        (tabs.cfg = {
+            bgType: "color",
+            bgSaturate: 20,
+            bgLight: 20,
+
+            hotkeys: true,
+            keys: "0123456789abcdefghijklmnopqrstuvwxyz",
+
+            icon: false,
+            tabsRenderDelay: 0,
+        })
     clearChildren(document.querySelector(`#href`))
     drawDir(document.querySelector(`#href`), [], ``, keyMap)
 }
