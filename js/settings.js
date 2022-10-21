@@ -90,14 +90,18 @@ function loadCfg() {
     })
     tabsListNode.appendChild(newTabButton(tabs))
     ;[
-        "icon",
-        "hotkeys",
         "keys",
-        "tabsRenderDelay",
-        "bgLight",
+        "hotkeys",
         "bgSaturate",
+        "bgLight",
+        "bgUpdTime",
+        "icon",
+        "tabsRenderDelay",
+        "clock",
+        "clockSec",
+        "clockUpdTime",
     ].forEach((x, i) => {
-        let input = document.querySelector((`#cfg.` + x).replaceAll(`.`, `-`))
+        let input = document.querySelector(`#cfg-${x}`)
 
         input[typeof cfg[x] == `boolean` ? "checked" : "value"] = cfg[x]
 
@@ -106,9 +110,9 @@ function loadCfg() {
                 input[
                     {
                         number: "valueAsNumber",
-                        boolean: "checked",
-                        string: "value",
-                    }[typeof cfg[x]]
+                        checkbox: "checked",
+                        text: "value",
+                    }[input.type]
                 ]
 
             draw()

@@ -4,8 +4,8 @@
         <link rel="stylesheet" href="style.css" type="text/css" />
         <title>New Tab</title>
         <script src="js/settings.js" defer></script>
-        <script src="script.js" defer></script>
         <script src="js/loop.js" defer></script>
+        <script src="script.js" defer></script>
         <script src="js/key.js" defer></script>
         <script src="js/import.js" defer></script>
         <script src="js/export.js" defer></script>
@@ -30,11 +30,17 @@
                     <h1>Background</h1>
                     <label>Saturate:<input type="number" min="0" max="100" id="cfg-bgSaturate"></label>
                     <label>Light:<input type="number" min="0" max="100" id="cfg-bgLight"></label>
+                    <label>Update time:<input type="number" min="0" max="1000" id="cfg-bgUpdTime"></label>
                 </div>
                 <div>
                     <h1>Tabs</h1>
                     <label>Icon:<input type="checkbox" id="cfg-icon"></label>
                     <label>Tabs Render Delay:<input type="number" min="0" max="1000" id="cfg-tabsRenderDelay"></label>
+                </div>
+                <div>
+                    <h1>Clock<input type="checkbox" id="cfg-clock"></h1>
+                    <label>Seconds:<input type="checkbox" id="cfg-clockSec"></label>
+                    <label>Update time:<input type="number" min="0" max="1000" id="cfg-clockUpdTime"></label>
                 </div>
             </div>
             <div class="settingsContainer" id="complete">

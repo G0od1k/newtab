@@ -123,20 +123,6 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
     })
 }
 
-Object.values(document.querySelectorAll(`#href>a`)).forEach((x, i) => {
-    let c = Object.values(document.querySelectorAll(`#href>a`)).length
-    x.style.position = `absolute`
-    x.style.bottom =
-        window.innerHeight / 2 +
-        (Math.cos(((Math.PI * 2) / c) * i) * window.innerHeight) / 3 +
-        "px"
-    x.style.left =
-        window.innerWidth / 2 +
-        (Math.sin(((Math.PI * 2) / c) * i) * window.innerHeight) / 3 +
-        "px"
-    x.style.transform = `translate(-50%, 50%)`
-})
-
 function draw() {
     keyMap = { sub: [] }
     cfg =
@@ -151,9 +137,14 @@ function draw() {
 
             icon: false,
             tabsRenderDelay: 0,
+
+            clock: true,
+            clockSec: true,
+            clockUpdTime: 1000,
         })
     clearChildren(document.querySelector(`#href`))
     drawDir(document.querySelector(`#href`), [], ``, keyMap)
+    loops()
 }
 
 draw()

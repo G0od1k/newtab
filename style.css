@@ -226,6 +226,7 @@ aside {
     transform: translateX(100%);
     padding: 8px;
     box-sizing: border-box;
+    border-radius: 1rem 0 0 1rem;
 
     transition: transform 0.4s;
 
@@ -306,6 +307,10 @@ aside > div {
 
 #settings > div > h1 {
     margin-top: 0;
+}
+
+#settings > div > label {
+    display: flex;
 }
 
 .tab {
