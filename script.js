@@ -118,7 +118,6 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             drawDir(div, path.concat(i), next, keyMap)
             div.className = `sub`
             a.appendChild(div)
-            a.className = `a c`
         }
     })
 }

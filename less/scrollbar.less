@@ -1,0 +1,35 @@
+::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+    transition: 0.4s;
+
+    &-button {
+        width: 0;
+        height: 0;
+        transition: 0.4s;
+    }
+
+    &-thumb {
+        background: #0000;
+
+        &:hover {
+            background: #444444;
+        }
+
+        &:active {
+            background: #ffffff;
+        }
+    }
+
+    &-track {
+        background: #0000;
+
+        &:active {
+            background: #333333;
+        }
+    }
+
+    &-corner {
+        background: transparent;
+    }
+}

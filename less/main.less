@@ -1,0 +1,135 @@
+body {
+    background: #080808;
+
+    width: 100vw;
+    height: 100vh;
+
+    transition: background-color 0.3s;
+
+    overflow: hidden;
+    margin: 0;
+}
+
+#href {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: flex-start;
+
+    /* background-color: #0006; */
+    border-radius: 1rem;
+
+    margin: 0.5rem;
+    height: 60vh;
+    width: 70vw;
+}
+
+.sub {
+    counter-reset: a;
+    overflow-x: hidden;
+    overflow-y: overlay;
+
+    transition: max-height 0.3s ease-out;
+    max-height: 0;
+    background-color: black;
+
+    position: absolute;
+    transform: translate(19rem, -2rem);
+
+    z-index: 2;
+
+    .a:hover > &,
+    &:hover,
+    a[h] > & {
+        transition: max-height 0.4s ease-in;
+        max-height: 32rem;
+        background-color: black;
+        animation: 0.4s over 0s 1 forwards;
+    }
+}
+
+@keyframes over {
+    100% {
+        overflow: visible;
+    }
+}
+
+@counter-style circled-alpha {
+    system: numeric;
+    symbols: "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" A B C D E F G H I J K L M N
+        O P Q R S T U V W X Y Z;
+}
+
+.a {
+    counter-increment: a;
+
+    color: white;
+    font-family: var(--font);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    /* transition: 0.4s; */
+
+    overflow: hidden;
+    position: relative;
+    display: block;
+    width: 19rem;
+    height: 2rem;
+
+    &:hover,
+    &[h] {
+        background-color: black;
+        overflow: visible;
+    }
+
+    &_name::before {
+        content: counters(a, ".", circled-alpha);
+        margin: 0 0.5rem;
+    }
+
+    & > &_icon {
+        /* display: none; */
+        width: 1.75rem;
+        height: 1.75rem;
+
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        float: left;
+        margin-left: 0.125rem;
+    }
+}
+
+.a:has(> .sub) {
+    &::after {
+        content: ">";
+        position: absolute;
+        right: 0.5rem;
+        transition: 0.3s;
+        transform-origin: 50% 55% 0;
+    }
+
+    &:hover,
+    &[h] {
+        &::after {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+u {
+    animation: col 5s infinite;
+    /* text-decoration-color: white; */
+}
+
+@keyframes col {
+    each(range(0%, 100%, 10), {
+        @{value} {
+            color: hsl(360 * @value, .86, .67);
+            text-shadow: var(--txtShad) $color;
+        }
+    });
+}
