@@ -4,8 +4,9 @@ window.onkeydown = (e) => {
 
     let code = e.code.replace(/(Digit)|(Key)(\w)/, "$3").toLowerCase()
     let i = toSubPath(keyMap, path)
-        .map((x) => x.key)
-        .indexOf(code)
+            .map((x) => x.key)
+            .indexOf(code),
+        targetTab = toSubPath(tabs, path)[i]
 
     if (
         (i == -1 && e.code != `Escape`) ||
@@ -17,7 +18,10 @@ window.onkeydown = (e) => {
         document.querySelector(`#I` + path.join(`_`)).removeAttribute(`h`)
 
         path.pop()
-    } else if (e.altKey && toSubPath(keyMap, path.concat(i)).length) {
+    } else if (
+        (e.altKey || targetTab.dir) &&
+        toSubPath(keyMap, path.concat(i)).length
+    ) {
         document
             .querySelector(`#I` + path.concat(i).join(`_`))
             .setAttribute(`h`, true)

@@ -50,19 +50,25 @@ function loadCfg() {
             "name",
             "url",
             "key",
+            "dir",
             "before",
             "after",
             "sliceStart",
             "sliceEnd",
         ].forEach((x) => {
             const target = tab.querySelector(`.tab_` + x)
-            target.value = tabData[x] ?? ``
+            target[target.type == `checkbox` ? "checked" : "value"] =
+                tabData[x] ?? ``
 
             target.oninput = () => {
                 tabData[x] =
-                    (target.type == `number`
-                        ? target.valueAsNumber
-                        : target.value) || undefined
+                    target[
+                        {
+                            number: "valueAsNumber",
+                            checkbox: "checked",
+                            text: "value",
+                        }[target.type]
+                    ] || undefined
                 draw()
             }
         })
@@ -73,6 +79,12 @@ function loadCfg() {
             tab.removeChild(tab.querySelector(`.tab_after`))
         } else {
             tab.removeChild(tab.querySelector(`.tab_url`))
+        }
+
+        if (tabData.sub) {
+            //? For future update
+        } else {
+            tab.removeChild(tab.querySelector(`label:has(.tab_dir)`))
         }
 
         tab.querySelector(`.tab_sub`).appendChild(newTab)
