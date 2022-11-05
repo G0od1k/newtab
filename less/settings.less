@@ -52,6 +52,34 @@ aside {
         &:hover {
             color: var(--inp-h);
         }
+
+        &[type="checkbox"] {
+            appearance: none;
+
+            &::after {
+                display: inline-block;
+                content: "";
+                width: 0.8rem;
+                height: 0.8rem;
+
+                background-color: #363636;
+                transition: background-color 0.3s;
+
+                border-radius: 0.2rem;
+            }
+
+            &:hover::after {
+                background-color: #545454;
+            }
+
+            &:checked::after {
+                background-color: #969696;
+            }
+
+            &:checked:hover::after {
+                background-color: #bababa;
+            }
+        }
     }
 
     button {
@@ -139,6 +167,7 @@ aside {
 
         > label {
             display: flex;
+            align-items: center;
         }
     }
 }
