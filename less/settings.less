@@ -166,7 +166,7 @@ aside {
         }
 
         > label {
-            display: flex;
+            display: inline-flex;
             align-items: center;
         }
     }
@@ -190,8 +190,7 @@ aside {
         text-align: center;
     }
 
-    > label {
-        display: inline-flex;
+    > label:extend(#settings > div > label) {
     }
 
     &_sliceVal {
