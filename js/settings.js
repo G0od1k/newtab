@@ -40,6 +40,34 @@ function loadCfg() {
         return button
     }
 
+    function swapTabUpButton(path, i) {
+        const button = document.createElement(`button`)
+        button.innerText = `↑`
+        button.className = `swapTabsUp`
+
+        button.onclick = function () {
+            ;[path.sub[i], path.sub[i - 1]] = [path.sub[i - 1], path.sub[i]]
+            loadCfg()
+            draw()
+        }
+
+        return button
+    }
+
+    function swapTabDownButton(path, i) {
+        const button = document.createElement(`button`)
+        button.innerText = `↓`
+        button.className = `swapTabsDown`
+
+        button.onclick = function () {
+            ;[path.sub[i], path.sub[i + 1]] = [path.sub[i + 1], path.sub[i]]
+            loadCfg()
+            draw()
+        }
+
+        return button
+    }
+
     function rendTab(tabData, root = false, parent, i) {
         const tab = document
                 .querySelector("template#tab")
@@ -88,7 +116,19 @@ function loadCfg() {
         }
 
         tab.querySelector(`.tab_sub`).appendChild(newTab)
-        tab.querySelector(`.tab_name`).before(removeTabButton(parent, i, root))
+        if (i) {
+            tab.querySelector(`.upButtons`).appendChild(
+                swapTabUpButton(parent, i)
+            )
+        }
+        if (i != parent.sub.length - 1) {
+            tab.querySelector(`.upButtons`).appendChild(
+                swapTabDownButton(parent, i)
+            )
+        }
+        tab.querySelector(`.upButtons`).appendChild(
+            removeTabButton(parent, i, root)
+        )
 
         tabData.sub?.forEach((subTab, i) => {
             newTab.before(rendTab(subTab, false, tabData, i))

@@ -87,8 +87,8 @@ aside {
         border: 0;
         border-radius: 0.25rem;
 
-        width: 1.33em;
-        height: 1.33em;
+        width: 1.4em;
+        height: 1.4em;
         aspect-ratio: 1/1;
         box-sizing: content-box;
         padding: 0;
@@ -139,7 +139,7 @@ aside {
     flex-direction: row;
     flex-wrap: wrap;
     align-content: flex-start;
-    align-items: baseline;
+    align-items: stretch;
     gap: 1rem;
 }
 
@@ -179,6 +179,8 @@ aside {
 
     border-radius: 0.25rem;
     background-color: #121212;
+
+    position: relative;
 
     &_name {
         font-size: 1rem;
@@ -226,19 +228,51 @@ aside {
             }
         }
     }
+
+    .upButtons {
+        position: absolute;
+        top: 0.25rem;
+        right: 0.25rem;
+        overflow: hidden;
+
+        max-width: 1.4rem;
+        transition: 0.3s;
+        padding: 0;
+
+        white-space: nowrap;
+        border-radius: 0.25rem;
+
+        background-color: #242424;
+
+        > :first-child {
+            margin: 0;
+            margin-right: -0.25rem;
+            transition: 0.1s;
+            transition-delay: 0.2s;
+        }
+
+        button {
+            .miniButton();
+        }
+
+        .removeTab:hover {
+            background-color: #d11a2a;
+        }
+
+        &:hover {
+            max-width: 4.7rem;
+            padding: 0.25rem;
+
+            > :first-child {
+                transition-delay: 0s;
+                width: 0;
+            }
+        }
+    }
 }
 
 .miniButton() {
     margin-left: 0.25em;
 
     font-size: 1rem;
-}
-
-.removeTab {
-    .miniButton();
-    float: right;
-
-    &:hover {
-        background-color: #d11a2a;
-    }
 }
