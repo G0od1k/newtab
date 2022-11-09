@@ -132,6 +132,12 @@ function loadCfg() {
     })
 }
 
+function clearCfg() {
+    setTimeout(() => {
+        clearChildren(document.querySelector(`#tabs`))
+    }, 300)
+}
+
 document.querySelector(`#settingsButtonOpen`).onclick = function () {
     loadCfg()
 }
@@ -139,8 +145,10 @@ document.querySelector(`#settingsButtonOpen`).onclick = function () {
 document.querySelector(`#discardSetting`).onclick = function () {
     tabs = JSON.parse(localStorage.tabs ?? `null`)
     draw()
+    clearCfg()
 }
 
 document.querySelector(`#applySetting`).onclick = function () {
     localStorage.setItem(`tabs`, JSON.stringify(tabs))
+    clearCfg()
 }
