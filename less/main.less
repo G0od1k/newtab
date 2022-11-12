@@ -4,10 +4,20 @@ body {
     width: 100vw;
     height: 100vh;
 
-    transition: background-color 0.3s;
-
     overflow: hidden;
     margin: 0;
+
+    position: absolute;
+    top: 0;
+}
+
+#bg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    transition: opacity 0.5s;
+    top: 0;
+    z-index: -1;
 }
 
 #href {
@@ -16,12 +26,17 @@ body {
     flex-direction: column;
     align-content: flex-start;
 
-    /* background-color: #0006; */
-    border-radius: 1rem;
+    .plate();
 
     margin: 0.5rem;
     height: 60vh;
-    width: 70vw;
+    width: 38rem;
+}
+
+.plate() {
+    backdrop-filter: blur(3px);
+    border-radius: 1rem;
+    background-color: #0002;
 }
 
 .sub {

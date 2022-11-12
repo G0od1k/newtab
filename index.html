@@ -11,8 +11,10 @@
         <script src="js/export.js" defer></script>
     </head>
     <body>
-        <div id="href"></div>
+        <div id="bg"></div>
+
         <span id="clock"></span>
+        <div id="href"></div>
 
         <label for="settingsCheck" id="settingsButtonOpen">⚙</label>
 
@@ -28,8 +30,18 @@
                 </div>
                 <div>
                     <h1>Background</h1>
+                    <label>Type:
+                        <select id="cfg-bgType">
+                            <option value="color">Color</option>
+                            <option value="lGrad">Linear Gradient</option>
+                            <option value="rGrad">Radial Gradient</option>
+                            <option value="image">Image</option>
+                        </select>
+                    </label>
                     <label>Saturate:<input type="number" min="0" max="100" id="cfg-bgSaturate"></label>
                     <label>Light:<input type="number" min="0" max="100" id="cfg-bgLight"></label>
+                    <label>Gradient color count:<input type="number" min="1" max="10" id="cfg-bgGradColCount"></label>
+                    <label>URIs:<textarea id="cfg-bgURIs"></textarea></label>
                     <label>Update time:<input type="number" min="0" max="1000" id="cfg-bgUpdTime"></label>
                 </div>
                 <div>

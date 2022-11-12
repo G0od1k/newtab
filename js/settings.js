@@ -144,8 +144,11 @@ function loadCfg() {
     ;[
         "keys",
         "hotkeys",
+        "bgType",
         "bgSaturate",
         "bgLight",
+        "bgGradColCount",
+        "bgURIs",
         "bgUpdTime",
         "icon",
         "tabsRenderDelay",
@@ -164,6 +167,8 @@ function loadCfg() {
                         number: "valueAsNumber",
                         checkbox: "checked",
                         text: "value",
+                        "select-one": "value",
+                        textarea: "value",
                     }[input.type]
                 ]
 

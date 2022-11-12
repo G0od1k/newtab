@@ -114,6 +114,52 @@ aside {
             width: 100%;
         }
     }
+
+    textarea {
+        background-color: #0000;
+        border: solid 0.0625rem var(--btn);
+        border-radius: 0.25rem;
+
+        color: var(--inp);
+
+        &:focus {
+            color: var(--inp-f);
+        }
+
+        &:hover {
+            color: var(--inp-h);
+        }
+
+        resize: vertical;
+        width: 100%;
+    }
+
+    select {
+        background-color: #0000;
+        border: 0;
+
+        color: var(--inp);
+
+        &:focus {
+            color: var(--inp-f);
+        }
+
+        &:hover {
+            color: var(--inp-h);
+        }
+
+        > option {
+            background-color: var(--btn) !important;
+
+            &:hover {
+                background-color: var(--btn-h) !important;
+            }
+
+            &:checked {
+                background-color: var(--btn-a) !important;
+            }
+        }
+    }
 }
 
 #settingsButtonOpen {

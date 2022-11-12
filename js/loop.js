@@ -13,9 +13,65 @@ function drawClock() {
 }
 
 function bgUpdate() {
-    document.body.style.background = `hsl(${Math.random() * 360}, ${
-        cfg.bgSaturate
-    }%, ${cfg.bgLight}%)`
+    function change(value) {
+        const bg = document.querySelector(`#bg`)
+
+        bg.style.background = value
+        bg.style.opacity = 1
+
+        setTimeout(() => {
+            document.body.style.background = bg.style.background
+            bg.style.opacity = 0
+        }, 500)
+    }
+
+    switch (cfg.bgType) {
+        case "color":
+            change(
+                `hsl(${Math.random() * 360}, ${cfg.bgSaturate}%, ${
+                    cfg.bgLight
+                }%)`
+            )
+            break
+        case "lGrad":
+            change(
+                `linear-gradient(${~~(Math.random() * 360)}deg, ${new Array(
+                    cfg.bgGradColCount
+                )
+                    .fill()
+                    .map(
+                        (x) =>
+                            `hsl(${Math.random() * 360}, ${cfg.bgSaturate}%, ${
+                                cfg.bgLight
+                            }%)`
+                    )
+                    .join()})`
+            )
+            break
+        case "rGrad":
+            change(
+                `radial-gradient( ${new Array(cfg.bgGradColCount)
+                    .fill()
+                    .map(
+                        (x) =>
+                            `hsl(${Math.random() * 360}, ${cfg.bgSaturate}%, ${
+                                cfg.bgLight
+                            }%)`
+                    )
+                    .join()})`
+            )
+            break
+        case "image":
+            let URIs = cfg.bgURIs.split(`\n`)
+            change(
+                `url(${
+                    URIs[~~(URIs.length * Math.random())]
+                }) center/cover no-repeat`
+            )
+            break
+        default:
+            break
+    }
 }
 
 let intervals = []

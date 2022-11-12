@@ -130,6 +130,9 @@ function draw() {
             bgType: "color",
             bgSaturate: 20,
             bgLight: 20,
+            bgGradColCount: 2,
+            bgURIs: ``,
+            bgUpdTime: 2000,
 
             hotkeys: true,
             keys: "0123456789abcdefghijklmnopqrstuvwxyz",
