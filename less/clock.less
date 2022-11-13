@@ -2,15 +2,22 @@
     position: absolute;
     top: 5vw;
     right: 5vw;
+    display: inline-block;
 
     font-family: var(--font);
     color: white;
     font-size: 8rem;
 
+    margin: 0.5rem;
     padding: 0rem 1.5rem;
     .plate();
 
     & > :nth-child(n + 4) {
         font-size: 4rem;
+    }
+
+    // @media (orientation: portrait) {
+    @media screen and (max-width: 75rem) {
+        position: static;
     }
 }
