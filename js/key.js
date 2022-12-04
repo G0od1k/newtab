@@ -28,7 +28,7 @@ window.onkeydown = (e) => {
 
         path.push(i)
     } else {
-        document.querySelector(`#I` + path.concat(i).join(`_`)).click()
+        document.querySelector(`#I${path.concat(i).join(`_`)} > a`).click()
     }
 
     // return false

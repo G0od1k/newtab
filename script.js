@@ -61,15 +61,15 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         }
     })
     toSubPath(tabs, path).forEach((h, i) => {
-        let a = document.createElement(`a`),
+        let name = document.createElement(`a`),
             icon = document.createElement(`img`),
-            name = document.createElement(`span`),
+            span = document.createElement(`span`),
             u = document.createElement(`u`)
 
-        a.className = `a`
+        span.className = `a`
         icon.className = `a_icon`
         name.className = `a_name`
-        a.id = `I` + path.concat(i).join(`_`)
+        span.id = `I` + path.concat(i).join(`_`)
 
         if (!h.key) {
             for (let j of h.name.toLowerCase().split(``)) {
@@ -92,10 +92,12 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
 
         lp = p || h.url
 
-        a.href = next =
-            (h.before ?? "") +
-            lp.slice(h.sliceStart, h.sliceEnd) +
-            (h.after ?? "")
+        const href =
+            (name.href =
+            next =
+                (h.before ?? "") +
+                lp.slice(h.sliceStart, h.sliceEnd) +
+                (h.after ?? ""))
 
         if (hotLetterIndex != -1) {
             name.append(h.name.slice(0, hotLetterIndex))
@@ -104,12 +106,12 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         name.append(h.name.slice(hotLetterIndex + 1))
 
         if (cfg.icon) {
-            icon.src = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${a.href}&size=32`
-            a.appendChild(icon)
+            icon.src = `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${name.href}&size=32`
+            span.appendChild(icon)
         }
-        a.appendChild(name)
+        span.appendChild(name)
         setTimeout(() => {
-            dir.appendChild(a)
+            dir.appendChild(span)
         }, cfg.tabsRenderDelay * i)
 
         if (h.sub) {
@@ -117,7 +119,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             div.id = `I` + path.concat(i).join(`_`) + `sub`
             drawDir(div, path.concat(i), next, keyMap)
             div.className = `sub`
-            a.appendChild(div)
+            span.appendChild(div)
         }
     })
 }

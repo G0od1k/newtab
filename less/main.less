@@ -55,7 +55,7 @@ body {
 
     .a:hover > &,
     &:hover,
-    a[h] > & {
+    .a[h] > & {
         transition: max-height 0.4s ease-in;
         max-height: 32rem;
         background-color: black;
@@ -82,9 +82,6 @@ body {
     font-family: var(--font);
     font-size: 1.5rem;
     line-height: 2rem;
-    text-decoration: none;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 
     /* transition: 0.4s; */
 
@@ -100,9 +97,18 @@ body {
         overflow: visible;
     }
 
-    &_name::before {
-        content: counters(a, ".", circled-alpha);
-        margin: 0 0.5rem;
+    &_name {
+        color: inherit;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        display: block;
+
+        &::before {
+            content: counters(a, ".", circled-alpha);
+            margin: 0 0.5rem;
+        }
     }
 
     & > &_icon {
@@ -128,6 +134,7 @@ body {
         content: ">";
         position: absolute;
         right: 0.5rem;
+        top: 0;
         transition: 0.3s;
         transform-origin: 50% 55% 0;
     }
@@ -152,4 +159,8 @@ u {
             text-shadow: var(--txtShad) $color;
         }
     });
+}
+
+input:focus-visible {
+    outline: none;
 }
