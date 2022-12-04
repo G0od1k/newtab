@@ -71,6 +71,8 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         name.className = `a_name`
         span.id = `I` + path.concat(i).join(`_`)
 
+        let hotLetterIndex = h.key == "#" ? -1 : 0
+
         if (!h.key) {
             for (let j of h.name.toLowerCase().split(``)) {
                 if (
@@ -79,15 +81,49 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
                         .indexOf(j) == -1 &&
                     cfg.keys.includes(j)
                 ) {
-                    toSubPath(keyMap, path)[i] = { sub: [], key: j }
+                    toSubPath(keyMap, path)[i] = {
+                        sub: [],
+                        key: j.replace(
+                            /./g,
+                            (x) =>
+                                ({
+                                    "`": "backquote",
+                                    "~": "backquote",
+
+                                    "-": "minus",
+                                    _: "minus",
+                                    "+": "equal",
+                                    "=": "equal",
+
+                                    "[": "bracketleft",
+                                    "{": "bracketleft",
+                                    "]": "bracketright",
+                                    "}": "bracketright",
+                                    "\\": "backslash",
+                                    "|": "backslash",
+
+                                    ";": "semicolon",
+                                    ":": "semicolon",
+                                    "'": "quote",
+                                    '"': "quote",
+
+                                    ",": "comma",
+                                    "<": "comma",
+                                    ".": "period",
+                                    ">": "period",
+                                    "/": "slash",
+                                    "?": "slash",
+                                }[x] ?? x)
+                        ),
+                    }
                     break
                 }
+                hotLetterIndex++
             }
         }
 
-        let hotLetterIndex = h.name
-            .toLowerCase()
-            .indexOf(toSubPath(keyMap, path)[i]?.key)
+        hotLetterIndex = hotLetterIndex < h.name.length ? hotLetterIndex : -1
+
         u.innerText = h.name[hotLetterIndex]
 
         lp = p || h.url
@@ -137,7 +173,7 @@ function draw() {
             bgUpdTime: 2000,
 
             hotkeys: true,
-            keys: "0123456789abcdefghijklmnopqrstuvwxyz",
+            keys: "0123456789abcdefghijklmnopqrstuvwxyz-[];',./",
 
             icon: false,
             tabsRenderDelay: 0,

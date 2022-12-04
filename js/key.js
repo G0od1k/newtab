@@ -2,7 +2,7 @@ window.onkeydown = (e) => {
     if (document.querySelector(`#settingsCheck`).checked || !cfg.hotkeys)
         return 0
 
-    let code = e.code.replace(/(Digit)|(Key)(\w)/, "$3").toLowerCase()
+    let code = e.code.replace(/(?:Digit)|(?:Key)(\w)/, "$1").toLowerCase()
     let i = toSubPath(keyMap, path)
             .map((x) => x.key)
             .indexOf(code),
