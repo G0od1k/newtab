@@ -112,6 +112,8 @@ aside {
         border: solid 0.0625rem var(--btn);
         border-radius: 0.25rem;
 
+        resize: vertical;
+
         color: var(--inp);
 
         &:focus {
@@ -122,8 +124,9 @@ aside {
             color: var(--inp-h);
         }
 
-        resize: vertical;
-        width: 100%;
+        &:not([cols]) {
+            width: 100%;
+        }
     }
 
     select {
@@ -206,6 +209,10 @@ aside {
         > label {
             display: inline-flex;
             align-items: center;
+
+            &:has(textarea) {
+                align-items: start;
+            }
         }
     }
 }
