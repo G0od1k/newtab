@@ -71,10 +71,18 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         name.className = `a_name`
         span.id = `I` + path.concat(i).join(`_`)
 
-        let hotLetterIndex = h.key == "#" ? -1 : 0
+        function transliterate(txt) {
+            return txt.toLowerCase().replace(/./g, (x) => {
+                return (
+                    symbolKeyMapParser(cfg.symbolKeyMapping).filter(
+                        (y) => y[0] == x
+                    )[0]?.[1] ?? x
+                )
+            })
+        }
 
         if (!h.key) {
-            for (let j of h.name.toLowerCase().split(``)) {
+            for (let j of transliterate(h.name).split(``)) {
                 if (
                     toSubPath(keyMap, path)
                         .map((x) => x.key)
@@ -83,46 +91,16 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
                 ) {
                     toSubPath(keyMap, path)[i] = {
                         sub: [],
-                        key: j.replace(
-                            /./g,
-                            (x) =>
-                                ({
-                                    "`": "backquote",
-                                    "~": "backquote",
-
-                                    "-": "minus",
-                                    _: "minus",
-                                    "+": "equal",
-                                    "=": "equal",
-
-                                    "[": "bracketleft",
-                                    "{": "bracketleft",
-                                    "]": "bracketright",
-                                    "}": "bracketright",
-                                    "\\": "backslash",
-                                    "|": "backslash",
-
-                                    ";": "semicolon",
-                                    ":": "semicolon",
-                                    "'": "quote",
-                                    '"': "quote",
-
-                                    ",": "comma",
-                                    "<": "comma",
-                                    ".": "period",
-                                    ">": "period",
-                                    "/": "slash",
-                                    "?": "slash",
-                                }[x] ?? x)
-                        ),
+                        key: j,
                     }
                     break
                 }
-                hotLetterIndex++
             }
         }
 
-        hotLetterIndex = hotLetterIndex < h.name.length ? hotLetterIndex : -1
+        const hotLetterIndex = transliterate(h.name).indexOf(
+            toSubPath(keyMap, path)[i]?.key
+        )
 
         u.innerText = h.name[hotLetterIndex]
 
@@ -173,7 +151,9 @@ function draw() {
             bgUpdTime: 2000,
 
             hotkeys: true,
-            keys: "0123456789abcdefghijklmnopqrstuvwxyz-[];',./",
+            keys: "0123456789abcdefghijklmnopqrstuvwxyz`-=[]\\;',./",
+            symbolKeyMapping:
+                "~ - `\n_ - -\n+ - =\n{ - [\n} - ]\n| - \\\n: - ;\n\" - '\n< - ,\n> - .\n? - /",
 
             icon: false,
             tabsRenderDelay: 0,

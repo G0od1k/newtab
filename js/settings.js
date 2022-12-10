@@ -144,6 +144,7 @@ function loadCfg() {
     ;[
         "keys",
         "hotkeys",
+        "symbolKeyMapping",
         "bgType",
         "bgSaturate",
         "bgLight",
