@@ -104,7 +104,8 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
 
         u.innerText = h.name[hotLetterIndex]
 
-        lp = p || h.url
+        let lp = p || h.url,
+            next
 
         const href =
             (name.href =
