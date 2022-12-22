@@ -61,7 +61,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         }
     })
     toSubPath(tabs, path).forEach((h, i) => {
-        let name = document.createElement(`a`),
+        let name = document.createElement(`span`),
             icon = document.createElement(`img`),
             span = document.createElement(`span`),
             u = document.createElement(`u`)
@@ -114,6 +114,10 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
                 lp.slice(h.sliceStart, h.sliceEnd) +
                 (h.after ?? ""))
 
+        name.onclick = async (e) => {
+            window.location.href = cfg.URIVars ? await URIVars(href) : href
+        }
+
         if (hotLetterIndex != -1) {
             name.append(h.name.slice(0, hotLetterIndex))
             name.appendChild(u)
@@ -158,6 +162,7 @@ function draw() {
 
             icon: false,
             tabsRenderDelay: 0,
+            URIVars: false,
 
             clock: true,
             clockSec: true,

@@ -7,9 +7,11 @@
         <script src="js/settings.js" defer></script>
         <script src="js/loop.js" defer></script>
         <script src="script.js" defer></script>
+        <script src="js/dialog.js" defer></script>
         <script src="js/key.js" defer></script>
         <script src="js/import.js" defer></script>
         <script src="js/export.js" defer></script>
+        <script src="js/uriVariables.js" defer></script>
     </head>
     <body>
         <div id="bg"></div>
@@ -21,6 +23,15 @@
 
         <input type="checkbox" id="settingsCheck" hidden />
         <input type="file" id="import" hidden />
+        
+        <dialog>
+            <h1>Header</h1>
+            <form  method="dialog">
+                <input type="text" id="dialogInput">
+                <button type="submit">Confirm</button>
+            </form>
+        </dialog>
+
         <aside>
             <div class="settingsContainer" id="tabs"></div>
             <div class="settingsContainer" id="settings">
@@ -50,6 +61,7 @@
                     <h1>Tabs</h1>
                     <label>Icon:<input type="checkbox" id="cfg-icon"></label>
                     <label>Tabs Render Delay:<input type="number" min="0" max="1000" id="cfg-tabsRenderDelay"></label>
+                    <label>Variables<input type="checkbox" id="cfg-URIVars"></label>
                 </div>
                 <div>
                     <h1>Clock<input type="checkbox" id="cfg-clock"></h1>

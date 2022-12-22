@@ -153,6 +153,7 @@ function loadCfg() {
         "bgUpdTime",
         "icon",
         "tabsRenderDelay",
+        "URIVars",
         "clock",
         "clockSec",
         "clockUpdTime",

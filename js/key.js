@@ -1,5 +1,9 @@
 window.onkeydown = (e) => {
-    if (document.querySelector(`#settingsCheck`).checked || !cfg.hotkeys)
+    if (
+        document.querySelector(`#settingsCheck`).checked ||
+        !cfg.hotkeys ||
+        e.target.id == `dialogInput`
+    )
         return 0
 
     let code = e.code
@@ -52,7 +56,9 @@ window.onkeydown = (e) => {
 
         path.push(i)
     } else {
-        document.querySelector(`#I${path.concat(i).join(`_`)} > a`).click()
+        document
+            .querySelector(`#I${path.concat(i).join(`_`)} > .a_name`)
+            .click()
     }
 
     // return false
