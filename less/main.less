@@ -29,8 +29,12 @@ body {
     .plate();
 
     margin: 0.5rem;
-    height: min(36rem, 60vh);
-    width: 38rem;
+    max-height: min(36rem, 60vh);
+    width: fit-content;
+
+    &:has(> :nth-child(19)) {
+        width: 38rem;
+    }
 }
 
 .plate() {
