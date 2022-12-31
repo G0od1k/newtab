@@ -61,7 +61,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
         }
     })
     toSubPath(tabs, path).forEach((h, i) => {
-        let name = document.createElement(`span`),
+        let name = document.createElement(`a`),
             icon = document.createElement(`img`),
             span = document.createElement(`span`),
             u = document.createElement(`u`)
@@ -115,6 +115,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
                 (h.after ?? ""))
 
         name.onclick = async (e) => {
+            e.preventDefault()
             window.location.href = cfg.URIVars ? await URIVars(href) : href
         }
 
