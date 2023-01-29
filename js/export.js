@@ -5,7 +5,7 @@ document.querySelector(`#export`).onclick = function () {
         "data:text/plain;charset=utf-8," +
             encodeURIComponent(JSON.stringify(tabs, null, 4))
     )
-    a.setAttribute("download", "backup.json")
+    a.setAttribute("download", "newtab.json")
 
     a.style.display = "none"
     document.body.appendChild(a)
