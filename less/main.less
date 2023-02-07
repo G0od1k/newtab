@@ -26,8 +26,6 @@ body {
     flex-direction: column;
     align-content: flex-start;
 
-    .plate();
-
     margin: 0.5rem;
     max-height: min(36rem, 60vh);
     width: fit-content;
@@ -37,10 +35,13 @@ body {
     }
 }
 
-.plate() {
+#href,
+#clock,
+dialog {
     backdrop-filter: blur(3px);
     border-radius: 1rem;
     background-color: #0002;
+    box-shadow: 0 0 1rem black;
 }
 
 .sub {
