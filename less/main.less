@@ -138,12 +138,13 @@ dialog {
 
 .a:has(> .sub) {
     &::after {
-        content: ">";
+        content: url(./svg/arrow-right.svg);
         position: absolute;
-        right: 0.5rem;
+        right: 0;
         top: 0;
         transition: 0.3s;
-        transform-origin: 50% 55% 0;
+        width: 2rem;
+        height: 2rem;
     }
 
     &:hover,
@@ -152,6 +153,10 @@ dialog {
             transform: rotate(90deg);
         }
     }
+}
+
+.dir::after {
+    content: url("./svg/dbl-arrow-right.svg") !important;
 }
 
 u {

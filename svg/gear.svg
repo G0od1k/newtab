@@ -1,0 +1,12 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 4 4">
+    <circle r=".75" cx="2" cy="2" fill="none" stroke="#fff" stroke-width=".3"/>
+    <path d="M1.8,1L2.2,1" id="hand" stroke="#fff" stroke-width=".3"/>
+    <use href="#hand" transform="rotate(45 2 2)"/>
+    <use href="#hand" transform="rotate(90 2 2)"/>
+    <use href="#hand" transform="rotate(135 2 2)"/>
+    <use href="#hand" transform="rotate(180 2 2)"/>
+    <use href="#hand" transform="rotate(225 2 2)"/>
+    <use href="#hand" transform="rotate(270 2 2)"/>
+    <use href="#hand" transform="rotate(315 2 2)"/>
+    <circle r=".3" cx="2" cy="2" fill="#fff"/>
+</svg>
