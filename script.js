@@ -130,9 +130,14 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             span.appendChild(icon)
         }
         span.appendChild(name)
-        setTimeout(() => {
+
+        if (!cfg.tabsRenderDelay) {
             dir.appendChild(span)
-        }, cfg.tabsRenderDelay * i)
+        } else {
+            setTimeout(() => {
+                dir.appendChild(span)
+            }, cfg.tabsRenderDelay * i)
+        }
 
         if (h.sub) {
             let div = document.createElement(`div`)
