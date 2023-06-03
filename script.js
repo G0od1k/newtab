@@ -67,6 +67,7 @@ function drawDir(dir, path = [], p = ``, keyMap = { sub: [] }) {
             u = document.createElement(`u`)
 
         span.className = `a`
+        if (h.dir) span.classList.add(`dir`)
         icon.className = `a_icon`
         name.className = `a_name`
         span.id = `I` + path.concat(i).join(`_`)
