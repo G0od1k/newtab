@@ -45,7 +45,7 @@ function bgUpdate() {
                                 cfg.bgLight
                             }%)`
                     )
-                    .join()})`
+                    .join()}) fixed`
             )
             break
         case "rGrad":
@@ -58,7 +58,7 @@ function bgUpdate() {
                                 cfg.bgLight
                             }%)`
                     )
-                    .join()})`
+                    .join()}) fixed`
             )
             break
         case "image":
@@ -66,7 +66,7 @@ function bgUpdate() {
             change(
                 `url(${
                     URIs[~~(URIs.length * Math.random())]
-                }) center/cover no-repeat`
+                }) center/cover no-repeat fixed`
             )
             break
         default:
