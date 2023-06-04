@@ -10,7 +10,6 @@ function loadCfg() {
 
     function newTabButton(path) {
         const button = document.createElement(`button`)
-        button.innerText = `+`
         button.className = `newTab`
 
         button.onclick = function () {
@@ -27,7 +26,6 @@ function loadCfg() {
 
     function removeTabButton(path, i, root) {
         const button = document.createElement(`button`)
-        button.innerText = `✕`
         button.className = `removeTab`
 
         button.onclick = function () {
@@ -42,7 +40,6 @@ function loadCfg() {
 
     function swapTabUpButton(path, i) {
         const button = document.createElement(`button`)
-        button.innerText = `↑`
         button.className = `swapTabsUp`
 
         button.onclick = function () {
@@ -56,7 +53,6 @@ function loadCfg() {
 
     function swapTabDownButton(path, i) {
         const button = document.createElement(`button`)
-        button.innerText = `↓`
         button.className = `swapTabsDown`
 
         button.onclick = function () {
