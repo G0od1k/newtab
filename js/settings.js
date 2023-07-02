@@ -85,14 +85,15 @@ function loadCfg() {
                 tabData[x] ?? ``
 
             target.oninput = () => {
-                tabData[x] =
+                let value =
                     target[
                         {
                             number: "valueAsNumber",
                             checkbox: "checked",
                             text: "value",
                         }[target.type]
-                    ] || undefined
+                    ]
+                tabData[x] = value === 0 ? 0 : value || undefined
                 draw()
             }
         })
