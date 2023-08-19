@@ -1,15 +1,27 @@
+function clockInit(type) {
+    const clockNode = document.querySelector(`#clock`)
+
+    clearChildren(clockNode)
+    ;["H", "M", "S"].slice(0, 2 + cfg.clockSec).forEach((x) => {
+        let node = document.createElement("span")
+
+        node.className = "num"
+        node.id = "clock" + x
+
+        clockNode.appendChild(node)
+    })
+}
+
 function drawClock() {
     if (!cfg.clock) return 0
 
     let d = new Date()
-    document.querySelector(`#clock`).innerHTML = [
-        d.getHours(),
-        d.getMinutes(),
-        d.getSeconds(),
-    ]
-        .slice(0, 2 + cfg.clockSec)
-        .map((x) => `<span>${(`0` + x).slice(-2)}</span>`)
-        .join(`<b>:</b>`)
+
+    ;["Hours", "Minutes", "Seconds"].slice(0, 2 + cfg.clockSec).forEach((x) => {
+        document.querySelector("#clock" + x.slice(0, 1)).innerText = (
+            "0" + d["get" + x]()
+        ).slice(-2)
+    })
 }
 
 function bgUpdate() {
@@ -50,7 +62,7 @@ function bgUpdate() {
             break
         case "rGrad":
             change(
-                `radial-gradient( ${new Array(cfg.bgGradColCount)
+                `radial-gradient(circle, ${new Array(cfg.bgGradColCount)
                     .fill()
                     .map(
                         (x) =>
@@ -77,6 +89,8 @@ function bgUpdate() {
 let intervals = []
 
 function loops() {
+    clockInit()
+
     intervals.forEach((id) => clearInterval(id))
     intervals = []
     ;[

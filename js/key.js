@@ -60,6 +60,4 @@ window.onkeydown = (e) => {
             .querySelector(`#I${path.concat(i).join(`_`)} > .a_name`)
             .click()
     }
-
-    // return false
 }

@@ -11,8 +11,14 @@
     margin: 0.5rem;
     padding: 0rem 1.5rem;
 
-    & > :nth-child(n + 4) {
-        font-size: 4rem;
+    > .num {
+        &:nth-child(n + 3) {
+            font-size: 4rem;
+        }
+
+        + .num::before {
+            content: ":";
+        }
     }
 
     // @media (orientation: portrait) {
