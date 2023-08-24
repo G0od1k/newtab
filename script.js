@@ -172,6 +172,7 @@ function draw() {
             URIVars: false,
 
             clock: true,
+            clockType: "num",
             clockSec: true,
             clockUpdTime: 1000,
         })

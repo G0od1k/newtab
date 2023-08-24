@@ -9,15 +9,75 @@
     font-size: 8rem;
 
     margin: 0.5rem;
-    padding: 0rem 1.5rem;
 
-    > .num {
-        &:nth-child(n + 3) {
-            font-size: 4rem;
+    &[type="num"] {
+        padding: 0rem 1.5rem;
+
+        > .num {
+            &:nth-child(n + 3) {
+                font-size: 4rem;
+            }
+
+            + .num::before {
+                content: ":";
+            }
+        }
+    }
+
+    &[type="arr"] {
+        width: 24rem;
+        height: 24rem;
+        border-radius: 12rem;
+
+        > .arrow {
+            --deg: 6deg;
+            --width: 0.5rem;
+
+            background-color: white;
+            position: absolute;
+            width: var(--width);
+            height: calc(11rem + var(--width) / 2);
+            top: 1rem;
+            left: 50%;
+            transform-origin: center 11rem;
+            transform: translateX(-50%) rotate(calc(var(--a) * var(--deg)));
+
+            border-radius: var(--width);
+
+            transition: 0.3s;
         }
 
-        + .num::before {
-            content: ":";
+        > #arrowH {
+            --deg: 30deg;
+        }
+
+        > #arrowM {
+            --width: 0.25rem;
+        }
+
+        > #arrowS {
+            --width: 0.125rem;
+        }
+
+        > .num {
+            transform: rotate(calc(var(--i) * 30deg));
+            > * {
+                transform: rotate(calc(var(--i) * -30deg));
+            }
+
+            position: absolute;
+            width: inherit;
+            height: inherit;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            font-size: 1.5rem;
+
+            > * {
+                text-align: center;
+            }
         }
     }
 

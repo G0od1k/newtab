@@ -152,6 +152,7 @@ function loadCfg() {
         "tabsRenderDelay",
         "URIVars",
         "clock",
+        "clockType",
         "clockSec",
         "clockUpdTime",
     ].forEach((x, i) => {

@@ -67,6 +67,14 @@
                 </div>
                 <div>
                     <h1>Clock <input type="checkbox" id="cfg-clock"></h1>
+                    <label>Type:
+                        <select id="cfg-clockType">
+                            <option value="num">Numeric</option>
+                            <option value="arr">Arrow</option>
+                            <option value="bin">Binary</option>
+                            <option value="bcd">BCD</option>
+                        </select>
+                    </label>
                     <label>Seconds:<input type="checkbox" id="cfg-clockSec"></label>
                     <label>Update time:<input type="number" min="0" max="1000" id="cfg-clockUpdTime"></label>
                 </div>

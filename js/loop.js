@@ -1,15 +1,44 @@
 function clockInit(type) {
     const clockNode = document.querySelector(`#clock`)
 
+    clockNode.setAttribute("type", cfg.clockType)
+
     clearChildren(clockNode)
-    ;["H", "M", "S"].slice(0, 2 + cfg.clockSec).forEach((x) => {
-        let node = document.createElement("span")
 
-        node.className = "num"
-        node.id = "clock" + x
+    switch (cfg.clockType) {
+        case "num":
+            ;["H", "M", "S"].slice(0, 2 + cfg.clockSec).forEach((x) => {
+                let node = document.createElement("span")
 
-        clockNode.appendChild(node)
-    })
+                node.className = "num"
+                node.id = "clock" + x
+
+                clockNode.appendChild(node)
+            })
+            break
+        case "arr":
+            new Array(12).fill().forEach((x, i) => {
+                let node = document.createElement("div")
+
+                node.className = "num"
+                node.style.setProperty("--i", i + 1)
+
+                let num = document.createElement("span")
+                num.innerText = i + 1
+                node.appendChild(num)
+
+                clockNode.appendChild(node)
+            })
+            ;["H", "M", "S"].slice(0, 2 + cfg.clockSec).forEach((x) => {
+                let node = document.createElement("div")
+
+                node.className = "arrow"
+                node.id = "arrow" + x
+
+                clockNode.appendChild(node)
+            })
+            break
+    }
 }
 
 function drawClock() {
@@ -17,11 +46,28 @@ function drawClock() {
 
     let d = new Date()
 
-    ;["Hours", "Minutes", "Seconds"].slice(0, 2 + cfg.clockSec).forEach((x) => {
-        document.querySelector("#clock" + x.slice(0, 1)).innerText = (
-            "0" + d["get" + x]()
-        ).slice(-2)
-    })
+    switch (cfg.clockType) {
+        case "num":
+            ;["Hours", "Minutes", "Seconds"]
+                .slice(0, 2 + cfg.clockSec)
+                .forEach((x) => {
+                    document.querySelector("#clock" + x.slice(0, 1)).innerText =
+                        ("0" + d["get" + x]()).slice(-2)
+                })
+            break
+        case "arr":
+            ;["Hours", "Minutes", "Seconds"]
+                .slice(0, 2 + cfg.clockSec)
+                .forEach((x) => {
+                    let arrow = document.querySelector("#arrow" + x.slice(0, 1))
+                    let value = +arrow.style.getPropertyValue("--a")
+                    while (d["get" + x]() != value % (x == "Hours" ? 24 : 60))
+                        value++
+
+                    arrow.style.setProperty("--a", value)
+                })
+            break
+    }
 }
 
 function bgUpdate() {
