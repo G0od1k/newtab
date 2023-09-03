@@ -29,6 +29,12 @@
         height: 24rem;
         border-radius: 12rem;
 
+        --num-deg: 30deg;
+
+        &.h24 {
+            --num-deg: 15deg;
+        }
+
         > .arrow {
             --deg: 6deg;
             --width: 0.5rem;
@@ -44,11 +50,11 @@
 
             border-radius: var(--width);
 
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.75, 0, 0.25, 1.5);
         }
 
         > #arrowH {
-            --deg: 30deg;
+            --deg: var(--num-deg);
         }
 
         > #arrowM {
@@ -60,9 +66,9 @@
         }
 
         > .num {
-            transform: rotate(calc(var(--i) * 30deg));
+            transform: rotate(calc(var(--i) * var(--num-deg)));
             > * {
-                transform: rotate(calc(var(--i) * -30deg));
+                transform: rotate(calc(var(--i) * var(--num-deg) * -1));
                 font-size: calc(1.5rem - var(--j) * 0.25rem);
             }
 

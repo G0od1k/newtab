@@ -154,6 +154,7 @@ function loadCfg() {
         "clock",
         "clockType",
         "clockSec",
+        "clock24h",
         "clockUpdTime",
         "clockNums",
     ].forEach((x, i) => {
