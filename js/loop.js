@@ -17,18 +17,23 @@ function clockInit(type) {
             })
             break
         case "arr":
-            new Array(12).fill().forEach((x, i) => {
-                let node = document.createElement("div")
+            arrowClockNumbersParser(cfg.clockNums)
+                .slice(0, 12)
+                .forEach((x, i) => {
+                    let node = document.createElement("div")
 
-                node.className = "num"
-                node.style.setProperty("--i", i + 1)
+                    node.className = "num"
+                    node.style.setProperty("--i", i + 1)
 
-                let num = document.createElement("span")
-                num.innerText = i + 1
-                node.appendChild(num)
+                    x.forEach((x, j) => {
+                        let num = document.createElement("span")
+                        num.style.setProperty("--j", j)
+                        num.innerText = x || "\xa0"
+                        node.appendChild(num)
+                    })
 
-                clockNode.appendChild(node)
-            })
+                    clockNode.appendChild(node)
+                })
             ;["H", "M", "S"].slice(0, 2 + cfg.clockSec).forEach((x) => {
                 let node = document.createElement("div")
 

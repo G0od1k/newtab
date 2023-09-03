@@ -155,6 +155,7 @@ function loadCfg() {
         "clockType",
         "clockSec",
         "clockUpdTime",
+        "clockNums",
     ].forEach((x, i) => {
         let input = document.querySelector(`#cfg-${x}`)
 
