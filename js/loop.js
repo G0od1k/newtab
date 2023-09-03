@@ -17,9 +17,9 @@ function clockInit(type) {
             })
             break
         case "arr":
-            clockNode.classList.toggle("h24", cfg.clock24h)
+            clockNode.classList.toggle("h24", !cfg.clock12h)
             arrowClockNumbersParser(cfg.clockNums)
-                .slice(0, cfg.clock24h ? 24 : 12)
+                .slice(0, cfg.clock12h ? 12 : 24)
                 .forEach((x, i) => {
                     let node = document.createElement("div")
 
