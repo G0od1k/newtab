@@ -1,0 +1,11 @@
+{
+    "manifest_version": 3,
+    "name": "newtab",
+    "description": "G0od1k's newtab",
+    "author": "g0cd1k@gmail.com",
+    "version": "1.0.0",
+    "homepage_url": "https://github.com/g0od1k/newtab",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    }
+}
