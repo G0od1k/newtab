@@ -44,6 +44,15 @@ function clockInit() {
                 clockNode.appendChild(node)
             })
             break
+        case "bin":
+            for (let x = 0; x < 2 + cfg.clockSec + cfg.clock12h; x++) {
+                for (let y = 0; y < 6; y++) {
+                    const plate = document.createElement("div")
+                    plate.id = `plate-${x}-${y}`
+                    clockNode.appendChild(plate)
+                }
+            }
+            break
         case "bcd":
             for (let x = 0; x < 4 + cfg.clockSec * 2 + cfg.clock12h; x++) {
                 for (let y = 0; y < 4; y++) {
@@ -81,6 +90,30 @@ function drawClock() {
 
                     arrow.style.setProperty("--a", value)
                 })
+            break
+        case "bin":
+            ;["Hours", "Minutes", "Seconds"]
+                .slice(0, 2 + cfg.clockSec)
+                .map((x) => {
+                    let num = d["get" + x]()
+                    if (x == "Hours" && cfg.clock12h) num = num % 12 || 12 // 12 hours format
+                    return num
+                })
+                .forEach((n, x) => {
+                    n.toString(2)
+                        .padStart(6, 0)
+                        .split("")
+                        .forEach((a, y) => {
+                            document
+                                .querySelector(`#plate-${x}-${y}`)
+                                .classList.toggle("a", +a)
+                        })
+                })
+            if (cfg.clock12h) {
+                document
+                    .querySelector(`#clock`)
+                    .lastChild.classList.toggle("a", d.getHours() > 11)
+            }
             break
         case "bcd":
             ;["Hours", "Minutes", "Seconds"]
