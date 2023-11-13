@@ -49,6 +49,8 @@ function clockInit() {
                 for (let y = 0; y < 6; y++) {
                     const plate = document.createElement("div")
                     plate.id = `plate-${x}-${y}`
+                    plate.innerText =
+                        y == 5 && x == 2 + cfg.clockSec ? "pm" : 2 ** (5 - y)
                     clockNode.appendChild(plate)
                 }
             }
@@ -58,6 +60,10 @@ function clockInit() {
                 for (let y = 0; y < 4; y++) {
                     const plate = document.createElement("div")
                     plate.id = `plate-${x}-${y}`
+                    plate.innerText =
+                        y == 3 && x == 4 + cfg.clockSec * 2
+                            ? "pm"
+                            : 2 ** (3 - y)
                     clockNode.appendChild(plate)
                 }
             }

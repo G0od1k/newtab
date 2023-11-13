@@ -104,8 +104,15 @@
             background-color: #0002;
             border-radius: 0.25rem;
 
+            line-height: $width;
+            font-size: 1.5rem;
+            text-align: center;
+            font-family: var(--font);
+            color: transparent;
+
             &.a {
                 background-color: white;
+                // color: #000b;
             }
         }
     }
@@ -114,7 +121,7 @@
         grid-template-rows: repeat(6, 1fr);
 
         > *:nth-child(1) {
-            background-color: transparent;
+            .disabled-plate();
         }
 
         &:not(.h24) > * {
@@ -125,7 +132,7 @@
             &:nth-last-child(4),
             &:nth-last-child(5),
             &:nth-last-child(6) {
-                background-color: transparent;
+                .disabled-plate();
             }
         }
     }
@@ -136,7 +143,7 @@
         > * {
             &:nth-child(8n + 1),
             &:nth-child(2) {
-                background-color: transparent;
+                .disabled-plate();
             }
         }
 
@@ -144,7 +151,7 @@
             &:nth-child(3),
             &:nth-last-child(2),
             &:nth-last-child(3) {
-                background-color: transparent;
+                .disabled-plate();
             }
         }
     }
@@ -153,4 +160,9 @@
     @media screen and (max-width: 75rem) {
         position: static;
     }
+}
+
+.disabled-plate () {
+    background-color: transparent;
+    color: transparent;
 }
