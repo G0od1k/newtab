@@ -1,7 +1,8 @@
-function clockInit(type) {
+function clockInit() {
     const clockNode = document.querySelector(`#clock`)
 
     clockNode.setAttribute("type", cfg.clockType)
+    clockNode.classList.toggle("h24", !cfg.clock12h)
 
     clearChildren(clockNode)
 
@@ -17,7 +18,6 @@ function clockInit(type) {
             })
             break
         case "arr":
-            clockNode.classList.toggle("h24", !cfg.clock12h)
             arrowClockNumbersParser(cfg.clockNums)
                 .slice(0, cfg.clock12h ? 12 : 24)
                 .forEach((x, i) => {
@@ -43,6 +43,15 @@ function clockInit(type) {
 
                 clockNode.appendChild(node)
             })
+            break
+        case "bcd":
+            for (let x = 0; x < 4 + cfg.clockSec * 2 + cfg.clock12h; x++) {
+                for (let y = 0; y < 4; y++) {
+                    const plate = document.createElement("div")
+                    plate.id = `plate-${x}-${y}`
+                    clockNode.appendChild(plate)
+                }
+            }
             break
     }
 }
@@ -72,6 +81,32 @@ function drawClock() {
 
                     arrow.style.setProperty("--a", value)
                 })
+            break
+        case "bcd":
+            ;["Hours", "Minutes", "Seconds"]
+                .slice(0, 2 + cfg.clockSec)
+                .map((x) => {
+                    let num = d["get" + x]()
+                    if (x == "Hours" && cfg.clock12h) num = num % 12 || 12 // 12 hours format
+                    return num.toString().padStart(2, 0).split("")
+                })
+                .flat()
+                .forEach((n, x) => {
+                    parseInt(n)
+                        .toString(2)
+                        .padStart(4, 0)
+                        .split("")
+                        .forEach((a, y) => {
+                            document
+                                .querySelector(`#plate-${x}-${y}`)
+                                .classList.toggle("a", +a)
+                        })
+                })
+            if (cfg.clock12h) {
+                document
+                    .querySelector(`#clock`)
+                    .lastChild.classList.toggle("a", d.getHours() > 11)
+            }
             break
     }
 }
