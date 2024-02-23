@@ -8,12 +8,12 @@
         <script src="js/parsers.js" defer></script>
         <script src="js/settings.js" defer></script>
         <script src="js/loop.js" defer></script>
+        <script src="js/weather.js" defer></script>
         <script src="script.js" defer></script>
         <script src="js/dialog.js" defer></script>
         <script src="js/key.js" defer></script>
         <script src="js/import.js" defer></script>
         <script src="js/export.js" defer></script>
-        <script src="js/weather.js" defer></script>
         <script src="js/uriVariables.js" defer></script>
     </head>
     <body>
@@ -86,6 +86,18 @@
                     <label>12-h:<input type="checkbox" id="cfg-clock12h"></label>
                     <label>Update time:<input type="number" min="0" max="1000" id="cfg-clockUpdTime"></label>
                     <label>Numbers:<textarea id="cfg-clockNums"></textarea></label>
+                </div>
+                <div>
+                    <h1>Weather <input type="checkbox" id="cfg-weather"></h1>
+                    <label>API key:<input type="text" id="cfg-weatherAPIkey"></label>
+                    <label>City:<input type="text" id="cfg-weatherCity"></label>
+                    <label>Language:<input type="text" id="cfg-weatherLang"></label>
+                    <label>Units:
+                        <select id="cfg-weatherUnits">
+                            <option value="metric">Metric</option>
+                            <option value="imperial">Imperial</option>
+                        </select>
+                    </label>
                 </div>
             </div>
             <div class="settingsContainer" id="settingsConfirm">

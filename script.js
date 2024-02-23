@@ -177,10 +177,17 @@ function draw() {
             clock12h: false,
             clockUpdTime: 1000,
             clockNums: "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12",
+
+            weather: false,
+            weatherAPIkey: "",
+            weatherCity: "Praha",
+            weatherLang: "en",
+            weatherUnits: "metric",
         })
     clearChildren(document.querySelector(`#href`))
     drawDir(document.querySelector(`#href`), [], ``, keyMap)
     loops()
+    weather()
 }
 
 draw()

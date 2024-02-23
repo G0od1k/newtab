@@ -157,6 +157,11 @@ function loadCfg() {
         "clock12h",
         "clockUpdTime",
         "clockNums",
+        "weather",
+        "weatherAPIkey",
+        "weatherCity",
+        "weatherLang",
+        "weatherUnits",
     ].forEach((x, i) => {
         let input = document.querySelector(`#cfg-${x}`)
 
