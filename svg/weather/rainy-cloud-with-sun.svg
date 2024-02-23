@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4">
+    <circle r=".5" cx="2.45" cy='1.55' fill="yellow" />
+    <g fill="white">
+        <circle r=".5" cx="1.35" cy='2' />
+        <circle r=".45" cx="1.8" cy='1.5' />
+        <circle r=".4" cx="2.4" cy='1.7' />
+        <circle r=".35" cx="2.8" cy='2.15' />
+        <path d="M1.35 2.5h1.45v-.35l-.4 -0.45l-.6 -.2l-.45 .5z" />
+    </g>
+    <path d="M1 3l.25 -.25" id="drop" stroke="aqua" stroke-width=".3" stroke-linecap="round"/>
+    <use href="#drop" transform="translate(.75)" />
+    <use href="#drop" transform="translate(1.5)" />
+</svg>

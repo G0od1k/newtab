@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4">
+    <use href="#cloud" transform="scale(.8) translate(.7875 .01225)" fill="gray"/>
+    <use href="#cloud" fill="white"/>
+    <defs>
+        <g id="cloud">
+            <circle r=".5" cx="1.35" cy='2' />
+            <circle r=".45" cx="1.8" cy='1.5' />
+            <circle r=".4" cx="2.4" cy='1.7' />
+            <circle r=".35" cx="2.8" cy='2.15' />
+            <path d="M1.35 2.5h1.45v-.35l-.4 -0.45l-.6 -.2l-.45 .5z" />
+        </g>
+    </defs>
+</svg>

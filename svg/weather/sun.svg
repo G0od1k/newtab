@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 4">
+    <g fill="yellow">
+        <circle r=".5" cx="2" cy='2' />
+        <path d="M2 1v.3" id="ray" stroke-width=".3" stroke="yellow" stroke-linecap="round" />
+        <use href="#ray" transform="rotate(45 2 2)"/>
+        <use href="#ray" transform="rotate(90 2 2)"/>
+        <use href="#ray" transform="rotate(135 2 2)"/>
+        <use href="#ray" transform="rotate(180 2 2)"/>
+        <use href="#ray" transform="rotate(225 2 2)"/>
+        <use href="#ray" transform="rotate(270 2 2)"/>
+        <use href="#ray" transform="rotate(315 2 2)"/>
+    </g>
+</svg>
