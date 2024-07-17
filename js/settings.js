@@ -176,6 +176,7 @@ function loadCfg() {
                         text: "value",
                         "select-one": "value",
                         textarea: "value",
+                        password: "value",
                     }[input.type]
                 ]
 

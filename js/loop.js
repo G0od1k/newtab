@@ -72,7 +72,11 @@ function clockInit() {
 }
 
 function drawClock() {
-    if (!cfg.clock) return 0
+    document.querySelector("#clock").style.display = null
+    if (!cfg.clock) {
+        document.querySelector("#clock").style.display = "none"
+        return 0
+    }
 
     let d = new Date()
 
